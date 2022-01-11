@@ -21,11 +21,18 @@ class Watcher
       when :created
         type = path_tool.type.upcase
 
-        if type == 'DIRECTORY'
+        case type
+        when 'DIRECTORY'
           response = ServerClient.post(type: type, relative_path: relative_path)
-
-          puts "response status is #{response.code}"
+        when 'FILE'
+          response = ServerClient.post(
+            type: type,
+            relative_path: relative_path,
+            attachment: File.new(path_to_object)
+          )
         end
+
+        puts "response status is #{response.code}"
       end
     end
   end

@@ -13,4 +13,8 @@ class ServerClient
       }.compact
     )
   end
+
+  def self.delete(relative_path:)
+    RestClient.delete("#{SERVER_URI}/api/v1/virtual_drives", params: { relative_path: relative_path })
+  end
 end

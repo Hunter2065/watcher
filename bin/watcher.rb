@@ -30,6 +30,10 @@ class Watcher
         )
 
         puts "response status is #{response.code}"
+      when :deleted
+        response = ServerClient.delete(relative_path: relative_path)
+
+        puts "response status is #{response.code}"
       end
     end
   end

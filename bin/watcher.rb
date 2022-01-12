@@ -28,7 +28,7 @@ class Watcher
             attachment: (File.new(path_to_object) if type == 'FILE')
           }.compact
         )
-
+        
         puts "response status is #{response.code}"
       when :deleted
         response = ServerClient.delete(relative_path: relative_path)
